@@ -1,0 +1,28 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: page-service
+  thymeleaf:
+    cache: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  rabbitmq:
+    host: 127.0.0.1
+    username: leyou137
+    password: leyou
+    virtual-host: /leyou137
+
+ly:
+  static:
+    itemDir: D:\Develop\nginx-1.16.0\html\item #静态页服务器地址
+    itemTemplate: item #模板名称
+  jwt:
+    pubKeyPath: D:\Develop\rsa-key\rsa-key.pub # 公钥地址
+    cookie:
+      cookieName: LY_TOKEN # cookie名称
+    app:
+      serviceName: page-service
+      secret: page-service

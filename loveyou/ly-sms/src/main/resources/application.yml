@@ -1,0 +1,22 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: sms-service
+  rabbitmq:
+    host: 127.0.0.1
+    username: leyou137
+    password: leyou
+    virtual-host: /leyou137
+
+ly:
+  sms:
+    accessKeyID: LTAI4GKuFHwy2RyhMtBZtLhX # 你自己的accessKeyId
+    accessKeySecret: DlGl25FRiKIaewAG0lKsjFWD0FnzoG # 你自己的AccessKeySecret
+    signName: 乐游商城 # 签名名称
+    verifyCodeTemplate: SMS_204275927 # 模板CODE
+    domain: dysmsapi.aliyuncs.com # 域名
+    action: SendSMS # API类型，发送短信
+    version: 2017-05-25 # API版本，固定值
+    regionID: cn-hangzhou # 区域id
+    code: code # 短信模板中验证码的占位符

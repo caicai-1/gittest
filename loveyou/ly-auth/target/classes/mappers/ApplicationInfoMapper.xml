@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leyou.auth.mapper.ApplicationInfoMapper">
+
+    <select id="selectTargetsByServiceName" resultType="String">
+        SELECT
+                service_name
+        FROM
+                `tb_application`
+        WHERE
+                id IN(
+                      SELECT
+                              appPri.target_id
+                      FROM
+                             `tb_application` app, `tb_application_privilege` appPri
+                      WHERE
+                              app.id = appPri.service_id
+                      AND
+                              app.service_name = #{serviceName})
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: auth-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///leyou?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true
+    username: root
+    password: root
+  redis:
+    host: 127.0.0.1
+
+mybatis-plus:
+  type-aliases-package: com.leyou.auth.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mappers/*.xml
+
+logging:
+  level:
+    com.leyou: debug
+ly:
+  jwt:
+    pubKeyPath: D:\Develop\rsa-key\rsa-key.pub # 公钥地址
+    priKeyPath: D:\Develop\rsa-key\rsa-key # 私钥地址
+    cookie:
+      expire: 30 #过期时间设置 单位分钟
+      refreshTime: 15 # 刷新时间 单位分钟
+      cookieName: LY_TOKEN # cookie名称
+      cookieDomain: leyou.com # cookie的域
+    app:
+      expire: 1440 #过期时间设置 单位分钟
+  encoder:
+    crypt:
+      secret: ${random.uuid}
+      strength: 10
